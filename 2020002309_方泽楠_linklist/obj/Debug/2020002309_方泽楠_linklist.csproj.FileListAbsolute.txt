@@ -1,0 +1,9 @@
+D:\Max\Work\arithmetic\2020002309_方泽楠_linklist\bin\Debug\2020002309_方泽楠_linklist.exe.config
+D:\Max\Work\arithmetic\2020002309_方泽楠_linklist\bin\Debug\2020002309_方泽楠_linklist.exe
+D:\Max\Work\arithmetic\2020002309_方泽楠_linklist\bin\Debug\2020002309_方泽楠_linklist.pdb
+D:\Max\Work\arithmetic\2020002309_方泽楠_linklist\obj\Debug\2020002309_方泽楠_linklist.csproj.AssemblyReference.cache
+D:\Max\Work\arithmetic\2020002309_方泽楠_linklist\obj\Debug\_2020002309_方泽楠_linklist.Properties.Resources.resources
+D:\Max\Work\arithmetic\2020002309_方泽楠_linklist\obj\Debug\2020002309_方泽楠_linklist.csproj.GenerateResource.cache
+D:\Max\Work\arithmetic\2020002309_方泽楠_linklist\obj\Debug\2020002309_方泽楠_linklist.csproj.CoreCompileInputs.cache
+D:\Max\Work\arithmetic\2020002309_方泽楠_linklist\obj\Debug\2020002309_方泽楠_linklist.exe
+D:\Max\Work\arithmetic\2020002309_方泽楠_linklist\obj\Debug\2020002309_方泽楠_linklist.pdb
