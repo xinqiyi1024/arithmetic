@@ -1,9 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2020002309_方泽楠_linklist", "2020002309_方泽楠_linklist.csproj", "{467B5916-A44D-4773-B689-687F010C1905}"
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2020002309_方泽楠_linklist", "2020002309_方泽楠_linklist\2020002309_方泽楠_linklist.csproj", "{470F69E2-2E3C-46EC-8278-49234E272EF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{467B5916-A44D-4773-B689-687F010C1905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{467B5916-A44D-4773-B689-687F010C1905}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{467B5916-A44D-4773-B689-687F010C1905}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{467B5916-A44D-4773-B689-687F010C1905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{470F69E2-2E3C-46EC-8278-49234E272EF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{470F69E2-2E3C-46EC-8278-49234E272EF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{470F69E2-2E3C-46EC-8278-49234E272EF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{470F69E2-2E3C-46EC-8278-49234E272EF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D402AFA3-113F-4683-8B45-447CB677A903}
 	EndGlobalSection
 EndGlobal
