@@ -15,7 +15,8 @@ namespace _2020002309_方泽楠_Stack
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
+            new FormChoice().Show();
+            Application.Run();
         }
     }
 }
