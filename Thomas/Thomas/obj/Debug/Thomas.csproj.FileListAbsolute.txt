@@ -1,0 +1,16 @@
+D:\project\VS2008\Thomas\Thomas\bin\Debug\Thomas.exe
+D:\project\VS2008\Thomas\Thomas\bin\Debug\Thomas.pdb
+D:\project\VS2008\Thomas\Thomas\obj\Debug\ResolveAssemblyReference.cache
+D:\project\VS2008\Thomas\Thomas\obj\Debug\Thomas.Form1.resources
+D:\project\VS2008\Thomas\Thomas\obj\Debug\Thomas.Properties.Resources.resources
+D:\project\VS2008\Thomas\Thomas\obj\Debug\Thomas.csproj.GenerateResource.Cache
+D:\project\VS2008\Thomas\Thomas\obj\Debug\Thomas.exe
+D:\project\VS2008\Thomas\Thomas\obj\Debug\Thomas.pdb
+D:\Max\Work\MaxWork\数据结构\Thomas\Thomas\obj\Debug\Thomas.exe
+D:\Max\Work\MaxWork\数据结构\Thomas\Thomas\obj\Debug\Thomas.pdb
+D:\Max\Work\MaxWork\数据结构\Thomas\Thomas\obj\Debug\ResolveAssemblyReference.cache
+D:\Max\Work\MaxWork\数据结构\Thomas\Thomas\obj\Debug\Thomas.Form1.resources
+D:\Max\Work\MaxWork\数据结构\Thomas\Thomas\obj\Debug\Thomas.Properties.Resources.resources
+D:\Max\Work\MaxWork\数据结构\Thomas\Thomas\obj\Debug\Thomas.csproj.GenerateResource.Cache
+D:\Max\Work\MaxWork\数据结构\Thomas\Thomas\bin\Debug\Thomas.exe
+D:\Max\Work\MaxWork\数据结构\Thomas\Thomas\bin\Debug\Thomas.pdb
