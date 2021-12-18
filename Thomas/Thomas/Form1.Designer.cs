@@ -28,30 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.init_btn = new System.Windows.Forms.Button();
-            this.confirm_btn = new System.Windows.Forms.Button();
+            this.confirmOver_btn = new System.Windows.Forms.Button();
             this.begin_btn = new System.Windows.Forms.Button();
-            
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-
+            this.confirmStart_btn = new System.Windows.Forms.Button();
+            this.carriage_lbx = new System.Windows.Forms.ListBox();
+            this.flow_lbx = new System.Windows.Forms.ListBox();
             this.start_carriage_cb = new System.Windows.Forms.ComboBox();
             this.over_carriage_cb = new System.Windows.Forms.ComboBox();
-
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-
-            this.stack_lb0 = new System.Windows.Forms.Label();
-            this.stack_lb1 = new System.Windows.Forms.Label();
-            this.stack_lb2 = new System.Windows.Forms.Label();
-            this.stack_lb3 = new System.Windows.Forms.Label();
-            this.stack_lb4 = new System.Windows.Forms.Label();
-            this.stack_lb5 = new System.Windows.Forms.Label();
-            this.stack_lb6 = new System.Windows.Forms.Label();
-            this.stack_lb7 = new System.Windows.Forms.Label();
-            this.stack_lb8 = new System.Windows.Forms.Label();
-
             this.start_pb0 = new System.Windows.Forms.PictureBox();
             this.start_pb1 = new System.Windows.Forms.PictureBox();
             this.start_pb2 = new System.Windows.Forms.PictureBox();
@@ -61,9 +49,8 @@
             this.start_pb6 = new System.Windows.Forms.PictureBox();
             this.start_pb7 = new System.Windows.Forms.PictureBox();
             this.start_pb8 = new System.Windows.Forms.PictureBox();
-
+            this.start_pb9 = new System.Windows.Forms.PictureBox();
             this.red_pb = new System.Windows.Forms.PictureBox();
-
             this.end_pb0 = new System.Windows.Forms.PictureBox();
             this.end_pb1 = new System.Windows.Forms.PictureBox();
             this.end_pb2 = new System.Windows.Forms.PictureBox();
@@ -73,7 +60,7 @@
             this.end_pb5 = new System.Windows.Forms.PictureBox();
             this.end_pb7 = new System.Windows.Forms.PictureBox();
             this.end_pb8 = new System.Windows.Forms.PictureBox();
-
+            this.end_pb9 = new System.Windows.Forms.PictureBox();
             this.end_lb0 = new System.Windows.Forms.Label();
             this.end_lb1 = new System.Windows.Forms.Label();
             this.end_lb2 = new System.Windows.Forms.Label();
@@ -83,7 +70,7 @@
             this.end_lb6 = new System.Windows.Forms.Label();
             this.end_lb7 = new System.Windows.Forms.Label();
             this.end_lb8 = new System.Windows.Forms.Label();
-
+            this.end_lb9 = new System.Windows.Forms.Label();
             this.start_lb0 = new System.Windows.Forms.Label();
             this.start_lb1 = new System.Windows.Forms.Label();
             this.start_lb2 = new System.Windows.Forms.Label();
@@ -93,7 +80,17 @@
             this.start_lb6 = new System.Windows.Forms.Label();
             this.start_lb7 = new System.Windows.Forms.Label();
             this.start_lb8 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.red_pb)).BeginInit();
+            this.start_lb9 = new System.Windows.Forms.Label();
+            this.stack_lb0 = new System.Windows.Forms.Label();
+            this.stack_lb1 = new System.Windows.Forms.Label();
+            this.stack_lb2 = new System.Windows.Forms.Label();
+            this.stack_lb3 = new System.Windows.Forms.Label();
+            this.stack_lb4 = new System.Windows.Forms.Label();
+            this.stack_lb5 = new System.Windows.Forms.Label();
+            this.stack_lb6 = new System.Windows.Forms.Label();
+            this.stack_lb7 = new System.Windows.Forms.Label();
+            this.stack_lb8 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.start_pb0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_pb1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_pb2)).BeginInit();
@@ -103,15 +100,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.start_pb6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_pb7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_pb8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.start_pb9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.red_pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.end_pb3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.end_pb3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.end_pb9)).BeginInit();
             this.SuspendLayout();
             // 
             // init_btn
@@ -124,65 +124,59 @@
             this.init_btn.UseVisualStyleBackColor = true;
             this.init_btn.Click += new System.EventHandler(this.init_btn_Click);
             // 
-            // confirm_btn
+            // confirmOver_btn
             // 
-            this.confirm_btn.Location = new System.Drawing.Point(272, 118);
-            this.confirm_btn.Name = "confirm_btn";
-            this.confirm_btn.Size = new System.Drawing.Size(92, 23);
-            this.confirm_btn.TabIndex = 6;
-            this.confirm_btn.Text = "确定";
-            this.confirm_btn.UseVisualStyleBackColor = true;
+            this.confirmOver_btn.Location = new System.Drawing.Point(285, 155);
+            this.confirmOver_btn.Name = "confirmOver_btn";
+            this.confirmOver_btn.Size = new System.Drawing.Size(64, 23);
+            this.confirmOver_btn.TabIndex = 6;
+            this.confirmOver_btn.Text = "确定";
+            this.confirmOver_btn.UseVisualStyleBackColor = true;
+            this.confirmOver_btn.Click += new System.EventHandler(this.confirmOver_btn_Click);
             // 
             // begin_btn
             // 
-            this.begin_btn.Location = new System.Drawing.Point(476, 117);
+            this.begin_btn.Location = new System.Drawing.Point(486, 139);
             this.begin_btn.Name = "begin_btn";
             this.begin_btn.Size = new System.Drawing.Size(75, 23);
             this.begin_btn.TabIndex = 47;
             this.begin_btn.Text = "开始调度";
             this.begin_btn.UseVisualStyleBackColor = true;
+            this.begin_btn.Click += new System.EventHandler(this.begin_btn_Click);
             // 
-            // red_pb
+            // confirmStart_btn
             // 
-            this.red_pb.Image = ((System.Drawing.Image)(resources.GetObject("red_pb.Image")));
-            this.red_pb.Location = new System.Drawing.Point(101, 12);
-            this.red_pb.Name = "red_pb";
-            this.red_pb.Size = new System.Drawing.Size(55, 34);
-            this.red_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.red_pb.TabIndex = 1;
-            this.red_pb.TabStop = false;
+            this.confirmStart_btn.Location = new System.Drawing.Point(285, 120);
+            this.confirmStart_btn.Name = "confirmStart_btn";
+            this.confirmStart_btn.Size = new System.Drawing.Size(64, 23);
+            this.confirmStart_btn.TabIndex = 113;
+            this.confirmStart_btn.Text = "确定";
+            this.confirmStart_btn.UseVisualStyleBackColor = true;
+            this.confirmStart_btn.Click += new System.EventHandler(this.confirmStart_btn_Click);
             // 
-            // stack_lb8
+            // carriage_lbx
             // 
-            this.stack_lb8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stack_lb8.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb8.Location = new System.Drawing.Point(377, 172);
-            this.stack_lb8.Name = "stack_lb8";
-            this.stack_lb8.Size = new System.Drawing.Size(68, 30);
-            this.stack_lb8.TabIndex = 19;
+            this.carriage_lbx.FormattingEnabled = true;
+            this.carriage_lbx.ItemHeight = 12;
+            this.carriage_lbx.Location = new System.Drawing.Point(156, 184);
+            this.carriage_lbx.Name = "carriage_lbx";
+            this.carriage_lbx.Size = new System.Drawing.Size(126, 256);
+            this.carriage_lbx.TabIndex = 26;
             // 
-            // listBox1
+            // flow_lbx
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(156, 184);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(126, 256);
-            this.listBox1.TabIndex = 26;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 12;
-            this.listBox2.Location = new System.Drawing.Point(555, 154);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(208, 292);
-            this.listBox2.TabIndex = 27;
+            this.flow_lbx.FormattingEnabled = true;
+            this.flow_lbx.ItemHeight = 12;
+            this.flow_lbx.Location = new System.Drawing.Point(608, 155);
+            this.flow_lbx.Name = "flow_lbx";
+            this.flow_lbx.Size = new System.Drawing.Size(208, 292);
+            this.flow_lbx.TabIndex = 27;
             // 
             // start_carriage_cb
             // 
             this.start_carriage_cb.FormattingEnabled = true;
             this.start_carriage_cb.Items.AddRange(new object[] {
+            "0",
             "1",
             "2",
             "3",
@@ -196,12 +190,13 @@
             this.start_carriage_cb.Name = "start_carriage_cb";
             this.start_carriage_cb.Size = new System.Drawing.Size(41, 20);
             this.start_carriage_cb.TabIndex = 36;
-            this.start_carriage_cb.Text = "1";
+            this.start_carriage_cb.Text = "0";
             // 
             // over_carriage_cb
             // 
             this.over_carriage_cb.FormattingEnabled = true;
             this.over_carriage_cb.Items.AddRange(new object[] {
+            "0",
             "1",
             "2",
             "3",
@@ -215,7 +210,7 @@
             this.over_carriage_cb.Name = "over_carriage_cb";
             this.over_carriage_cb.Size = new System.Drawing.Size(41, 20);
             this.over_carriage_cb.TabIndex = 37;
-            this.over_carriage_cb.Text = "1";
+            this.over_carriage_cb.Text = "0";
             // 
             // label1
             // 
@@ -224,7 +219,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(143, 12);
             this.label1.TabIndex = 2;
-            this.label1.Text = "请输入软卧车厢号 (1-9):";
+            this.label1.Text = "请输入软卧车厢号 (0-9):";
             // 
             // label2
             // 
@@ -233,79 +228,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(179, 12);
             this.label2.TabIndex = 3;
-            this.label2.Text = "请输入调度后软卧车厢号 (1-9):";
-            // 
-            // stack_lb0
-            // 
-            this.stack_lb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stack_lb0.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb0.Location = new System.Drawing.Point(377, 412);
-            this.stack_lb0.Name = "stack_lb0";
-            this.stack_lb0.Size = new System.Drawing.Size(68, 30);
-            this.stack_lb0.TabIndex = 63;
-            // 
-            // stack_lb1
-            // 
-            this.stack_lb1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stack_lb1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb1.Location = new System.Drawing.Point(377, 382);
-            this.stack_lb1.Name = "stack_lb1";
-            this.stack_lb1.Size = new System.Drawing.Size(68, 30);
-            this.stack_lb1.TabIndex = 62;
-            // 
-            // stack_lb2
-            // 
-            this.stack_lb2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stack_lb2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb2.Location = new System.Drawing.Point(377, 352);
-            this.stack_lb2.Name = "stack_lb2";
-            this.stack_lb2.Size = new System.Drawing.Size(68, 30);
-            this.stack_lb2.TabIndex = 61;
-            // 
-            // stack_lb3
-            // 
-            this.stack_lb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stack_lb3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb3.Location = new System.Drawing.Point(377, 322);
-            this.stack_lb3.Name = "stack_lb3";
-            this.stack_lb3.Size = new System.Drawing.Size(68, 30);
-            this.stack_lb3.TabIndex = 60;
-            // 
-            // stack_lb4
-            // 
-            this.stack_lb4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stack_lb4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb4.Location = new System.Drawing.Point(377, 292);
-            this.stack_lb4.Name = "stack_lb4";
-            this.stack_lb4.Size = new System.Drawing.Size(68, 30);
-            this.stack_lb4.TabIndex = 59;
-            // 
-            // stack_lb5
-            // 
-            this.stack_lb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stack_lb5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb5.Location = new System.Drawing.Point(377, 262);
-            this.stack_lb5.Name = "stack_lb5";
-            this.stack_lb5.Size = new System.Drawing.Size(68, 30);
-            this.stack_lb5.TabIndex = 58;
-            // 
-            // stack_lb6
-            // 
-            this.stack_lb6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stack_lb6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb6.Location = new System.Drawing.Point(377, 232);
-            this.stack_lb6.Name = "stack_lb6";
-            this.stack_lb6.Size = new System.Drawing.Size(68, 30);
-            this.stack_lb6.TabIndex = 57;
-            // 
-            // stack_lb7
-            // 
-            this.stack_lb7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stack_lb7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb7.Location = new System.Drawing.Point(377, 202);
-            this.stack_lb7.Name = "stack_lb7";
-            this.stack_lb7.Size = new System.Drawing.Size(68, 30);
-            this.stack_lb7.TabIndex = 56;
+            this.label2.Text = "请输入调度后软卧车厢号 (0-9):";
             // 
             // start_pb0
             // 
@@ -397,6 +320,26 @@
             this.start_pb8.TabIndex = 80;
             this.start_pb8.TabStop = false;
             // 
+            // start_pb9
+            // 
+            this.start_pb9.Image = global::Thomas.Properties.Resources._1;
+            this.start_pb9.Location = new System.Drawing.Point(442, 67);
+            this.start_pb9.Name = "start_pb9";
+            this.start_pb9.Size = new System.Drawing.Size(49, 34);
+            this.start_pb9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.start_pb9.TabIndex = 109;
+            this.start_pb9.TabStop = false;
+            // 
+            // red_pb
+            // 
+            this.red_pb.Image = ((System.Drawing.Image)(resources.GetObject("red_pb.Image")));
+            this.red_pb.Location = new System.Drawing.Point(101, 12);
+            this.red_pb.Name = "red_pb";
+            this.red_pb.Size = new System.Drawing.Size(55, 34);
+            this.red_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.red_pb.TabIndex = 1;
+            this.red_pb.TabStop = false;
+            // 
             // end_pb0
             // 
             this.end_pb0.Image = global::Thomas.Properties.Resources._1;
@@ -406,16 +349,6 @@
             this.end_pb0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.end_pb0.TabIndex = 82;
             this.end_pb0.TabStop = false;
-            // 
-            // end_pb3
-            // 
-            this.end_pb3.Image = global::Thomas.Properties.Resources._1;
-            this.end_pb3.Location = new System.Drawing.Point(656, 67);
-            this.end_pb3.Name = "end_pb3";
-            this.end_pb3.Size = new System.Drawing.Size(49, 34);
-            this.end_pb3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.end_pb3.TabIndex = 86;
-            this.end_pb3.TabStop = false;
             // 
             // end_pb1
             // 
@@ -436,6 +369,16 @@
             this.end_pb2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.end_pb2.TabIndex = 87;
             this.end_pb2.TabStop = false;
+            // 
+            // end_pb3
+            // 
+            this.end_pb3.Image = global::Thomas.Properties.Resources._1;
+            this.end_pb3.Location = new System.Drawing.Point(656, 67);
+            this.end_pb3.Name = "end_pb3";
+            this.end_pb3.Size = new System.Drawing.Size(49, 34);
+            this.end_pb3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.end_pb3.TabIndex = 86;
+            this.end_pb3.TabStop = false;
             // 
             // end_pb4
             // 
@@ -486,6 +429,16 @@
             this.end_pb8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.end_pb8.TabIndex = 89;
             this.end_pb8.TabStop = false;
+            // 
+            // end_pb9
+            // 
+            this.end_pb9.Image = global::Thomas.Properties.Resources._1;
+            this.end_pb9.Location = new System.Drawing.Point(944, 67);
+            this.end_pb9.Name = "end_pb9";
+            this.end_pb9.Size = new System.Drawing.Size(49, 34);
+            this.end_pb9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.end_pb9.TabIndex = 111;
+            this.end_pb9.TabStop = false;
             // 
             // end_lb0
             // 
@@ -595,6 +548,18 @@
             this.end_lb8.Text = "8";
             this.end_lb8.Visible = false;
             // 
+            // end_lb9
+            // 
+            this.end_lb9.AutoSize = true;
+            this.end_lb9.BackColor = System.Drawing.Color.Transparent;
+            this.end_lb9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.end_lb9.Location = new System.Drawing.Point(963, 67);
+            this.end_lb9.Name = "end_lb9";
+            this.end_lb9.Size = new System.Drawing.Size(11, 12);
+            this.end_lb9.TabIndex = 112;
+            this.end_lb9.Text = "9";
+            this.end_lb9.Visible = false;
+            // 
             // start_lb0
             // 
             this.start_lb0.AutoSize = true;
@@ -703,11 +668,118 @@
             this.start_lb8.Text = "8";
             this.start_lb8.Visible = false;
             // 
+            // start_lb9
+            // 
+            this.start_lb9.AutoSize = true;
+            this.start_lb9.BackColor = System.Drawing.Color.Transparent;
+            this.start_lb9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.start_lb9.Location = new System.Drawing.Point(460, 67);
+            this.start_lb9.Name = "start_lb9";
+            this.start_lb9.Size = new System.Drawing.Size(11, 12);
+            this.start_lb9.TabIndex = 110;
+            this.start_lb9.Text = "9";
+            this.start_lb9.Visible = false;
+            // 
+            // stack_lb0
+            // 
+            this.stack_lb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stack_lb0.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.stack_lb0.Location = new System.Drawing.Point(377, 416);
+            this.stack_lb0.Name = "stack_lb0";
+            this.stack_lb0.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb0.TabIndex = 116;
+            this.stack_lb0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // stack_lb1
+            // 
+            this.stack_lb1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stack_lb1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.stack_lb1.Location = new System.Drawing.Point(377, 381);
+            this.stack_lb1.Name = "stack_lb1";
+            this.stack_lb1.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb1.TabIndex = 63;
+            // 
+            // stack_lb2
+            // 
+            this.stack_lb2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stack_lb2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.stack_lb2.Location = new System.Drawing.Point(377, 346);
+            this.stack_lb2.Name = "stack_lb2";
+            this.stack_lb2.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb2.TabIndex = 114;
+            // 
+            // stack_lb3
+            // 
+            this.stack_lb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stack_lb3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.stack_lb3.Location = new System.Drawing.Point(377, 311);
+            this.stack_lb3.Name = "stack_lb3";
+            this.stack_lb3.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb3.TabIndex = 122;
+            // 
+            // stack_lb4
+            // 
+            this.stack_lb4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stack_lb4.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.stack_lb4.Location = new System.Drawing.Point(377, 276);
+            this.stack_lb4.Name = "stack_lb4";
+            this.stack_lb4.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb4.TabIndex = 121;
+            // 
+            // stack_lb5
+            // 
+            this.stack_lb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stack_lb5.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.stack_lb5.Location = new System.Drawing.Point(377, 241);
+            this.stack_lb5.Name = "stack_lb5";
+            this.stack_lb5.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb5.TabIndex = 120;
+            // 
+            // stack_lb6
+            // 
+            this.stack_lb6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stack_lb6.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.stack_lb6.Location = new System.Drawing.Point(377, 206);
+            this.stack_lb6.Name = "stack_lb6";
+            this.stack_lb6.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb6.TabIndex = 119;
+            // 
+            // stack_lb7
+            // 
+            this.stack_lb7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stack_lb7.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.stack_lb7.Location = new System.Drawing.Point(377, 171);
+            this.stack_lb7.Name = "stack_lb7";
+            this.stack_lb7.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb7.TabIndex = 118;
+            // 
+            // stack_lb8
+            // 
+            this.stack_lb8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stack_lb8.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.stack_lb8.Location = new System.Drawing.Point(377, 136);
+            this.stack_lb8.Name = "stack_lb8";
+            this.stack_lb8.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb8.TabIndex = 117;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 449);
+            this.ClientSize = new System.Drawing.Size(1004, 462);
+            this.Controls.Add(this.stack_lb3);
+            this.Controls.Add(this.stack_lb4);
+            this.Controls.Add(this.stack_lb5);
+            this.Controls.Add(this.stack_lb6);
+            this.Controls.Add(this.stack_lb7);
+            this.Controls.Add(this.stack_lb8);
+            this.Controls.Add(this.stack_lb0);
+            this.Controls.Add(this.stack_lb2);
+            this.Controls.Add(this.confirmStart_btn);
+            this.Controls.Add(this.end_lb9);
+            this.Controls.Add(this.end_pb9);
+            this.Controls.Add(this.start_lb9);
+            this.Controls.Add(this.start_pb9);
             this.Controls.Add(this.start_lb8);
             this.Controls.Add(this.start_lb6);
             this.Controls.Add(this.start_lb7);
@@ -744,28 +816,19 @@
             this.Controls.Add(this.start_pb5);
             this.Controls.Add(this.start_pb6);
             this.Controls.Add(this.start_pb0);
-            this.Controls.Add(this.stack_lb0);
             this.Controls.Add(this.stack_lb1);
-            this.Controls.Add(this.stack_lb2);
-            this.Controls.Add(this.stack_lb3);
-            this.Controls.Add(this.stack_lb4);
-            this.Controls.Add(this.stack_lb5);
-            this.Controls.Add(this.stack_lb6);
-            this.Controls.Add(this.stack_lb7);
             this.Controls.Add(this.begin_btn);
             this.Controls.Add(this.over_carriage_cb);
             this.Controls.Add(this.start_carriage_cb);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.stack_lb8);
-            this.Controls.Add(this.confirm_btn);
+            this.Controls.Add(this.flow_lbx);
+            this.Controls.Add(this.carriage_lbx);
+            this.Controls.Add(this.confirmOver_btn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.red_pb);
             this.Controls.Add(this.init_btn);
             this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.red_pb)).EndInit();
+            this.Text = "Thomas";
             ((System.ComponentModel.ISupportInitialize)(this.start_pb0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_pb1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_pb2)).EndInit();
@@ -775,15 +838,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.start_pb6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_pb7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_pb8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.start_pb9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.red_pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.end_pb3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.end_pb3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_pb8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.end_pb9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -793,23 +859,15 @@
 
         private System.Windows.Forms.Button init_btn;
         private System.Windows.Forms.PictureBox red_pb;
-        private System.Windows.Forms.Button confirm_btn;
-        private System.Windows.Forms.Label stack_lb8;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button confirmOver_btn;
+        private System.Windows.Forms.ListBox carriage_lbx;
+        private System.Windows.Forms.ListBox flow_lbx;
         private System.Windows.Forms.ComboBox start_carriage_cb;
         private System.Windows.Forms.ComboBox over_carriage_cb;
         private System.Windows.Forms.Button begin_btn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label stack_lb7;
-        private System.Windows.Forms.Label stack_lb6;
-        private System.Windows.Forms.Label stack_lb5;
-        private System.Windows.Forms.Label stack_lb4;
-        private System.Windows.Forms.Label stack_lb3;
-        private System.Windows.Forms.Label stack_lb2;
         private System.Windows.Forms.Label stack_lb1;
-        private System.Windows.Forms.Label stack_lb0;
         private System.Windows.Forms.PictureBox start_pb0;
         private System.Windows.Forms.PictureBox start_pb6;
         private System.Windows.Forms.PictureBox start_pb5;
@@ -846,6 +904,20 @@
         private System.Windows.Forms.Label start_lb7;
         private System.Windows.Forms.Label start_lb6;
         private System.Windows.Forms.Label start_lb8;
+        private System.Windows.Forms.PictureBox start_pb9;
+        private System.Windows.Forms.Label start_lb9;
+        private System.Windows.Forms.Label end_lb9;
+        private System.Windows.Forms.PictureBox end_pb9;
+        private System.Windows.Forms.Button confirmStart_btn;
+        private System.Windows.Forms.Label stack_lb2;
+        private System.Windows.Forms.Label stack_lb0;
+        private System.Windows.Forms.Label stack_lb8;
+        private System.Windows.Forms.Label stack_lb7;
+        private System.Windows.Forms.Label stack_lb6;
+        private System.Windows.Forms.Label stack_lb5;
+        private System.Windows.Forms.Label stack_lb4;
+        private System.Windows.Forms.Label stack_lb3;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

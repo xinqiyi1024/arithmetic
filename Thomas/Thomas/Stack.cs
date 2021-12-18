@@ -47,7 +47,7 @@ namespace Thomas
         }
 
         /**将item压入栈中*/
-        public bool push(T item)
+        public T push(T item)
         {
             bool b = false;
             if (!isFull())
@@ -55,7 +55,7 @@ namespace Thomas
                 data[++top] = item;
                 b = !b;
             }
-            return b;
+            return item;
         }
 
         /**返回栈顶元素，并且出栈*/
