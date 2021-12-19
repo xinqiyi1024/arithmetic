@@ -37,7 +37,6 @@ namespace Thomas
         }
 
         /* 点击初始化按钮进行重置 */
-
         private void init_btn_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 10; i++)
@@ -54,25 +53,27 @@ namespace Thomas
             }
             // 重置数据
             rightFlags = new bool[10];
+            leftFlags = new bool[10];
+            stack = new Stack<int>(9);
             leftCarriageNums = new List<int>();
             rightCarriageNums = new List<int>();
-            leftFlags = new bool[10];
-            rightFlags = new bool[10];
+            count = rightNum = leftNum = leftHead = rightHead = 0;
             // 清空操作区
             carriage_lbx.Items.Clear();
             flow_lbx.Items.Clear();
-            // 
-            stack = new Stack<int>(9);
-            count = rightNum = leftNum = leftHead = rightHead = 0;
         }
 
         /* 确认软卧车厢，并将车厢变色 */
         private void confirmStart_btn_Click(object sender, EventArgs e)
         {
+            // 获取车厢号
             int i = int.Parse(start_carriage_cb.Text);
+            // 车厢变色
             rightFlags[i] = !rightFlags[i];
             endPbs[i].Image = rightFlags[i] ? Thomas.Properties.Resources._2 : Thomas.Properties.Resources._1;
+            // 重置数据
             rightCarriageNums = new List<int>();
+            // 添加数据
             for (int j = 0; j < 10; j++)
             {
                 if (rightFlags[j]) { rightCarriageNums.Add(j); }
@@ -82,6 +83,7 @@ namespace Thomas
         /* 确认调度后的车厢，并写入 */
         private void confirmOver_btn_Click(object sender, EventArgs e)
         {
+            // 同上
             int i = int.Parse(over_carriage_cb.Text);
             leftFlags[i] = !leftFlags[i];
             startPbs[i].Image = leftFlags[i] ? Thomas.Properties.Resources._2 : Thomas.Properties.Resources._1;
@@ -90,85 +92,100 @@ namespace Thomas
             {
                 if (leftFlags[j]) { leftCarriageNums.Add(j); }
             }
+            // 调用方法，显示数据
             display();
         }
 
         private void begin_btn_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("----------------------------");
+
             if (leftNum < 10 && rightNum < 10)
             {
+                // 统计软卧个数
                 int rightCount = rightCarriageNums.Count;
                 int leftCount = leftCarriageNums.Count;
+                // 判断，如有误则提示
                 if (rightCount != leftCount)
                 {
                     MessageBox.Show("卧铺数量有错，调度前" + rightCount + "个" + "调度后" + leftCount + "个");
                 }
+                // 个数正确
                 else
                 {
+                    // 计算步骤
                     count++;
-
-
-                    Console.WriteLine("count" + count);
                     Console.WriteLine("leftNum" + leftNum);
-                    Console.WriteLine("rightNum" + rightNum);
-                    Console.WriteLine("leftHead" + leftHead);
-                    Console.WriteLine("rightHead" + rightHead);
-                    Console.WriteLine("rightFlags[rightNum]" + rightFlags[rightNum]);
-                    Console.WriteLine("leftFlags[leftNum]" + leftFlags[leftNum]);
-
+                    // 如果颜色相同直接到位
                     if (leftFlags[leftNum] == rightFlags[rightNum])
                     {
+                        startPbs[leftNum].Visible = true;
+                        startLbs[leftNum].Visible = true;
                         flow_lbx.Items.Add("第" + count + "步：第" + rightNum++ + "节车厢直接到位");
                         leftNum++;
-                        Console.WriteLine("rightnum" + rightNum);
 
-                        Console.WriteLine("leftnum" + leftNum);
                     }
+                    // 颜色不同，进出栈
                     else
                     {
-                        Console.WriteLine("leftCarriageNums[leftHead]" + leftCarriageNums[leftHead]);
-                        Console.WriteLine("rightCarriageNums[rightHead]" + rightCarriageNums[rightHead]);
-
-                        if ((leftFlags[leftNum] && rightCarriageNums[rightHead] >= leftCarriageNums[leftHead]) || (rightFlags[rightNum] && rightCarriageNums[rightHead] <= leftCarriageNums[leftHead]))
+                        Console.WriteLine("leftHead" + leftHead);
+                        Console.WriteLine("rightHead" + rightHead);
+                        Console.WriteLine("leftFlags[leftNum]" + leftFlags[leftNum]);
+                        Console.WriteLine("rightCarriageNums[rightHead] > leftCarriageNums[leftHead]" + (rightCarriageNums[rightHead] > leftCarriageNums[leftHead]));
+                        Console.WriteLine("rightFlags[rightNum]" + rightFlags[rightNum]);
+                        Console.WriteLine("rightCarriageNums[rightHead] < leftCarriageNums[leftHead])" + (rightCarriageNums[rightHead] < leftCarriageNums[leftHead]));
+                        Console.WriteLine("leftHead" + leftHead);
+                        Console.WriteLine("[rightHead" + rightHead);
+                        // 软卧在左且右边还有软卧或软卧在右且左边还有软卧
+                        if (leftFlags[leftNum] && (rightCarriageNums[rightHead] > leftCarriageNums[leftHead]) || rightFlags[rightNum] && (rightCarriageNums[rightHead] < leftCarriageNums[leftHead]))
                         {
-                            if (stack.stackLength() > 0 && rightFlags[stack.pope()])
+
+                            // 如果栈顶是软卧，则调出
+                            if (stack.stackLength() > 0 && leftFlags[leftNum] == rightFlags[stack.pope()])
                             {
+                                Console.WriteLine("len" + stack.stackLength());
                                 Console.WriteLine("pop1");
-                                leftNum++;
+                                Console.WriteLine("pop1" + rightFlags[stack.pope()]);
+                                startPbs[leftNum].Visible = true;
+                                startLbs[leftNum].Visible = true;
                                 flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
+                                leftNum++;
                             }
+                            // 非软卧，进栈
                             else
                             {
                                 flow_lbx.Items.Add("第" + count + "步：第" + stack.push(rightNum++) + "节车厢进库里暂等");
                             }
-                            Console.WriteLine("leftnum" + leftNum);
-                            Console.WriteLine("rightnum" + rightNum);
                         }
+                        // 不符合,调出
                         else
                         {
                             Console.WriteLine("pop2");
+                            startLbs[leftNum].Visible = true;
+                            startPbs[leftNum].Visible = true;
                             flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
                             leftNum++;
-                            Console.WriteLine("leftnum" + leftNum);
-                            Console.WriteLine("rightnum" + rightNum);
-
                         }
-                        leftHead = leftNum - 1 == leftCarriageNums[leftHead] && leftHead < leftCount - 1 ? ++leftHead : leftHead;
-                        rightHead = rightNum - 1 == rightCarriageNums[rightHead] && rightHead < rightCount - 1 ? ++rightHead : rightHead;
+                        // 进行下一个软卧操作
                     }
-                    Console.WriteLine("-------------------");
+                    leftHead = leftNum - 1 == leftCarriageNums[leftHead] && leftHead < leftCount - 1 ? ++leftHead : leftHead;
+                    rightHead = rightNum - 1 == rightCarriageNums[rightHead] && rightHead < rightCount - 1 ? ++rightHead : rightHead;
+                    Console.WriteLine("leftNum" + leftNum);
 
                 }
-
             }
+            // 如果栈内还有元素，调出
             else if (!stack.isEmpty())
             {
-                Console.WriteLine("pop3");
                 count++;
+                Console.WriteLine("pop3");
+                startPbs[leftNum].Visible = true;
+                startLbs[leftNum].Visible = true;
                 flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
             }
         }
 
+        /* 显示调度后的软卧车厢号 */
         private void display()
         {
             carriage_lbx.Items.Clear();
