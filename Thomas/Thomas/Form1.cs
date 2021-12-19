@@ -14,11 +14,11 @@ namespace Thomas
         /* 全局变量 */
         PictureBox[] startPbs, endPbs;
         Label[] startLbs, endLbs, stackLbs;
-        bool[] startFlags = new bool[10];
-        bool[] endFlags = new bool[10];
-        List<int> startCarriageNums = new List<int>();
-        List<int> endCarriageNums = new List<int>();
-        int count = 0, startNum = 0, endNum = 0;
+        bool[] leftFlags = new bool[10];
+        bool[] rightFlags = new bool[10];
+        List<int> leftCarriageNums = new List<int>();
+        List<int> rightCarriageNums = new List<int>();
+        int count = 0, rightNum = 0, leftNum = 0, leftHead = 0, rightHead = 0;
         Stack<int> stack = new Stack<int>(9);
         /* 初始化 */
         public Form1()
@@ -53,29 +53,29 @@ namespace Thomas
                 startPbs[i].Image = Thomas.Properties.Resources._1;
             }
             // 重置数据
-            endFlags = new bool[10];
-            startCarriageNums = new List<int>();
-            endCarriageNums = new List<int>();
-            startFlags = new bool[10];
-            endFlags = new bool[10];
+            rightFlags = new bool[10];
+            leftCarriageNums = new List<int>();
+            rightCarriageNums = new List<int>();
+            leftFlags = new bool[10];
+            rightFlags = new bool[10];
             // 清空操作区
             carriage_lbx.Items.Clear();
             flow_lbx.Items.Clear();
             // 
             stack = new Stack<int>(9);
-            count = startNum = endNum = 0;
+            count = rightNum = leftNum = leftHead = rightHead = 0;
         }
 
         /* 确认软卧车厢，并将车厢变色 */
         private void confirmStart_btn_Click(object sender, EventArgs e)
         {
             int i = int.Parse(start_carriage_cb.Text);
-            endFlags[i] = !endFlags[i];
-            endPbs[i].Image = endFlags[i] ? Thomas.Properties.Resources._2 : Thomas.Properties.Resources._1;
-            endCarriageNums = new List<int>();
+            rightFlags[i] = !rightFlags[i];
+            endPbs[i].Image = rightFlags[i] ? Thomas.Properties.Resources._2 : Thomas.Properties.Resources._1;
+            rightCarriageNums = new List<int>();
             for (int j = 0; j < 10; j++)
             {
-                if (endFlags[j]) { endCarriageNums.Add(j); }
+                if (rightFlags[j]) { rightCarriageNums.Add(j); }
             }
         }
 
@@ -83,59 +83,87 @@ namespace Thomas
         private void confirmOver_btn_Click(object sender, EventArgs e)
         {
             int i = int.Parse(over_carriage_cb.Text);
-            startFlags[i] = !startFlags[i];
-            startPbs[i].Image = startFlags[i] ? Thomas.Properties.Resources._2 : Thomas.Properties.Resources._1;
-            startCarriageNums = new List<int>();
+            leftFlags[i] = !leftFlags[i];
+            startPbs[i].Image = leftFlags[i] ? Thomas.Properties.Resources._2 : Thomas.Properties.Resources._1;
+            leftCarriageNums = new List<int>();
             for (int j = 0; j < 10; j++)
             {
-                if (startFlags[j]) { startCarriageNums.Add(j); }
+                if (leftFlags[j]) { leftCarriageNums.Add(j); }
             }
             display();
         }
 
         private void begin_btn_Click(object sender, EventArgs e)
         {
-            if (endNum < 10 && startNum < 10)
+            if (leftNum < 10 && rightNum < 10)
             {
-                int startCount = startCarriageNums.Count;
-                int endCount = endCarriageNums.Count;
-                if (startCount != endCount)
+                int rightCount = rightCarriageNums.Count;
+                int leftCount = leftCarriageNums.Count;
+                if (rightCount != leftCount)
                 {
-                    MessageBox.Show("卧铺数量有错，调度前" + startCount + "个" + "调度后" + endCount + "个");
+                    MessageBox.Show("卧铺数量有错，调度前" + rightCount + "个" + "调度后" + leftCount + "个");
                 }
                 else
                 {
                     count++;
-                    Console.WriteLine("startFlag" + startFlags[startNum]);
-                    Console.WriteLine("endFlag" + endFlags[endNum]);
-                    if (startFlags[endNum] == endFlags[startNum])
+
+
+                    Console.WriteLine("count" + count);
+                    Console.WriteLine("leftNum" + leftNum);
+                    Console.WriteLine("rightNum" + rightNum);
+                    Console.WriteLine("leftHead" + leftHead);
+                    Console.WriteLine("rightHead" + rightHead);
+                    Console.WriteLine("rightFlags[rightNum]" + rightFlags[rightNum]);
+                    Console.WriteLine("leftFlags[leftNum]" + leftFlags[leftNum]);
+
+                    if (leftFlags[leftNum] == rightFlags[rightNum])
                     {
-                        flow_lbx.Items.Add("第" + count + "步：第" + startNum++ + "节车厢直接到位");
-                        endNum++;
-                        Console.WriteLine("startnum" + startNum);
-                        Console.WriteLine("endnum" + endNum);
+                        flow_lbx.Items.Add("第" + count + "步：第" + rightNum++ + "节车厢直接到位");
+                        leftNum++;
+                        Console.WriteLine("rightnum" + rightNum);
+
+                        Console.WriteLine("leftnum" + leftNum);
                     }
                     else
                     {
-                        if ((startFlags[endNum] && endCarriageNums[0] > startCarriageNums[0]) || (endFlags[startNum] && endCarriageNums[0] < startCarriageNums[0]))
+                        Console.WriteLine("leftCarriageNums[leftHead]" + leftCarriageNums[leftHead]);
+                        Console.WriteLine("rightCarriageNums[rightHead]" + rightCarriageNums[rightHead]);
+
+                        if ((leftFlags[leftNum] && rightCarriageNums[rightHead] >= leftCarriageNums[leftHead]) || (rightFlags[rightNum] && rightCarriageNums[rightHead] <= leftCarriageNums[leftHead]))
                         {
-                            flow_lbx.Items.Add("第" + count + "步：第" + stack.push(startNum++) + "节车厢进库里暂等");
-                            Console.WriteLine("startnum" + startNum);
-                            Console.WriteLine("endnum" + endNum);
+                            if (stack.stackLength() > 0 && rightFlags[stack.pope()])
+                            {
+                                Console.WriteLine("pop1");
+                                leftNum++;
+                                flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
+                            }
+                            else
+                            {
+                                flow_lbx.Items.Add("第" + count + "步：第" + stack.push(rightNum++) + "节车厢进库里暂等");
+                            }
+                            Console.WriteLine("leftnum" + leftNum);
+                            Console.WriteLine("rightnum" + rightNum);
                         }
                         else
                         {
+                            Console.WriteLine("pop2");
                             flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
-                            endNum++;
-                            Console.WriteLine("startnum" + startNum);
-                            Console.WriteLine("endnum" + endNum);
+                            leftNum++;
+                            Console.WriteLine("leftnum" + leftNum);
+                            Console.WriteLine("rightnum" + rightNum);
+
                         }
+                        leftHead = leftNum - 1 == leftCarriageNums[leftHead] && leftHead < leftCount - 1 ? ++leftHead : leftHead;
+                        rightHead = rightNum - 1 == rightCarriageNums[rightHead] && rightHead < rightCount - 1 ? ++rightHead : rightHead;
                     }
                     Console.WriteLine("-------------------");
+
                 }
+
             }
             else if (!stack.isEmpty())
             {
+                Console.WriteLine("pop3");
                 count++;
                 flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
             }
@@ -144,9 +172,9 @@ namespace Thomas
         private void display()
         {
             carriage_lbx.Items.Clear();
-            for (int i = 0; i < startCarriageNums.Count; i++)
+            for (int i = 0; i < leftCarriageNums.Count; i++)
             {
-                carriage_lbx.Items.Add("第" + startCarriageNums[i] + "车厢");
+                carriage_lbx.Items.Add("第" + leftCarriageNums[i] + "车厢");
             }
         }
     }

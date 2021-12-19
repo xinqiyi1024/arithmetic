@@ -64,5 +64,11 @@ namespace Thomas
             T item = isEmpty() ? data[-1] : data[top--];
             return item;
         }
+
+        /**返回栈顶元素，不出栈*/
+        public T pope()
+        {
+            return data[top];
+        }
     }
 }
