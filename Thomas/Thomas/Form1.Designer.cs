@@ -445,7 +445,7 @@
             this.end_lb0.AutoSize = true;
             this.end_lb0.BackColor = System.Drawing.Color.Transparent;
             this.end_lb0.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.end_lb0.Location = new System.Drawing.Point(531, 67);
+            this.end_lb0.Location = new System.Drawing.Point(532, 67);
             this.end_lb0.Name = "end_lb0";
             this.end_lb0.Size = new System.Drawing.Size(11, 12);
             this.end_lb0.TabIndex = 91;
@@ -682,84 +682,94 @@
             // 
             // stack_lb0
             // 
+            this.stack_lb0.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb0.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb0.Location = new System.Drawing.Point(377, 416);
+            this.stack_lb0.ForeColor = System.Drawing.Color.Transparent;
+            this.stack_lb0.Location = new System.Drawing.Point(387, 416);
             this.stack_lb0.Name = "stack_lb0";
-            this.stack_lb0.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb0.Size = new System.Drawing.Size(68, 34);
             this.stack_lb0.TabIndex = 116;
             this.stack_lb0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // stack_lb1
             // 
+            this.stack_lb1.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb1.Location = new System.Drawing.Point(377, 381);
+            this.stack_lb1.Location = new System.Drawing.Point(387, 382);
             this.stack_lb1.Name = "stack_lb1";
-            this.stack_lb1.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb1.Size = new System.Drawing.Size(68, 34);
             this.stack_lb1.TabIndex = 63;
             // 
             // stack_lb2
             // 
+            this.stack_lb2.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb2.Location = new System.Drawing.Point(377, 346);
+            this.stack_lb2.Location = new System.Drawing.Point(387, 348);
             this.stack_lb2.Name = "stack_lb2";
-            this.stack_lb2.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb2.Size = new System.Drawing.Size(68, 34);
             this.stack_lb2.TabIndex = 114;
             // 
             // stack_lb3
             // 
+            this.stack_lb3.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb3.Location = new System.Drawing.Point(377, 311);
+            this.stack_lb3.Location = new System.Drawing.Point(387, 314);
             this.stack_lb3.Name = "stack_lb3";
-            this.stack_lb3.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb3.Size = new System.Drawing.Size(68, 34);
             this.stack_lb3.TabIndex = 122;
             // 
             // stack_lb4
             // 
+            this.stack_lb4.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb4.Location = new System.Drawing.Point(377, 276);
+            this.stack_lb4.Location = new System.Drawing.Point(387, 280);
             this.stack_lb4.Name = "stack_lb4";
-            this.stack_lb4.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb4.Size = new System.Drawing.Size(68, 34);
             this.stack_lb4.TabIndex = 121;
             // 
             // stack_lb5
             // 
+            this.stack_lb5.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb5.Location = new System.Drawing.Point(377, 241);
+            this.stack_lb5.Location = new System.Drawing.Point(387, 246);
             this.stack_lb5.Name = "stack_lb5";
-            this.stack_lb5.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb5.Size = new System.Drawing.Size(68, 34);
             this.stack_lb5.TabIndex = 120;
             // 
             // stack_lb6
             // 
+            this.stack_lb6.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb6.Location = new System.Drawing.Point(377, 206);
+            this.stack_lb6.Location = new System.Drawing.Point(387, 212);
             this.stack_lb6.Name = "stack_lb6";
-            this.stack_lb6.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb6.Size = new System.Drawing.Size(68, 34);
             this.stack_lb6.TabIndex = 119;
             // 
             // stack_lb7
             // 
+            this.stack_lb7.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb7.Location = new System.Drawing.Point(377, 171);
+            this.stack_lb7.Location = new System.Drawing.Point(387, 178);
             this.stack_lb7.Name = "stack_lb7";
-            this.stack_lb7.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb7.Size = new System.Drawing.Size(68, 34);
             this.stack_lb7.TabIndex = 118;
             // 
             // stack_lb8
             // 
+            this.stack_lb8.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb8.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb8.Location = new System.Drawing.Point(377, 136);
+            this.stack_lb8.Location = new System.Drawing.Point(387, 144);
             this.stack_lb8.Name = "stack_lb8";
-            this.stack_lb8.Size = new System.Drawing.Size(68, 35);
+            this.stack_lb8.Size = new System.Drawing.Size(68, 34);
             this.stack_lb8.TabIndex = 117;
             // 
             // Form1
@@ -767,14 +777,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 462);
-            this.Controls.Add(this.stack_lb3);
-            this.Controls.Add(this.stack_lb4);
-            this.Controls.Add(this.stack_lb5);
-            this.Controls.Add(this.stack_lb6);
-            this.Controls.Add(this.stack_lb7);
-            this.Controls.Add(this.stack_lb8);
-            this.Controls.Add(this.stack_lb0);
-            this.Controls.Add(this.stack_lb2);
             this.Controls.Add(this.confirmStart_btn);
             this.Controls.Add(this.end_lb9);
             this.Controls.Add(this.end_pb9);
@@ -816,7 +818,6 @@
             this.Controls.Add(this.start_pb5);
             this.Controls.Add(this.start_pb6);
             this.Controls.Add(this.start_pb0);
-            this.Controls.Add(this.stack_lb1);
             this.Controls.Add(this.begin_btn);
             this.Controls.Add(this.over_carriage_cb);
             this.Controls.Add(this.start_carriage_cb);
@@ -827,6 +828,15 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.red_pb);
             this.Controls.Add(this.init_btn);
+            this.Controls.Add(this.stack_lb0);
+            this.Controls.Add(this.stack_lb1);
+            this.Controls.Add(this.stack_lb2);
+            this.Controls.Add(this.stack_lb3);
+            this.Controls.Add(this.stack_lb4);
+            this.Controls.Add(this.stack_lb5);
+            this.Controls.Add(this.stack_lb6);
+            this.Controls.Add(this.stack_lb7);
+            this.Controls.Add(this.stack_lb8);
             this.Name = "Form1";
             this.Text = "Thomas";
             ((System.ComponentModel.ISupportInitialize)(this.start_pb0)).EndInit();
