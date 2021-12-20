@@ -14,10 +14,10 @@ namespace Thomas
         /* 全局变量 */
         PictureBox[] startPbs, endPbs;
         Label[] startLbs, endLbs, stackLbs;
-        bool[] leftFlags = new bool[10];
-        bool[] rightFlags = new bool[10];
-        List<int> leftCarriageNums = new List<int>();
-        List<int> rightCarriageNums = new List<int>();
+        bool[] leftFlags = new bool[10], rightFlags = new bool[10];
+        int stackX = 397, imgY = 67;
+        int[] stackPositions = new int[9], imgPositions = new int[10];
+        List<int> leftCarriageNums = new List<int>(), rightCarriageNums = new List<int>();
         int count = 0, rightNum = 0, leftNum = 0, leftHead = 0, rightHead = 0;
         Stack<int> stack = new Stack<int>(9);
         /* 初始化 */
@@ -34,6 +34,13 @@ namespace Thomas
             endLbs = new Label[] { end_lb0, end_lb1, end_lb2, end_lb3, end_lb4, end_lb5, end_lb6, end_lb7, end_lb8, end_lb9 };
             // stackLbs数组存放栈0-8
             stackLbs = new Label[] { stack_lb0, stack_lb1, stack_lb2, stack_lb3, stack_lb4, stack_lb5, stack_lb6, stack_lb7, stack_lb8 };
+            // stackPositions数组存放stack的纵坐标,imgPositions数组存放img的恒坐标
+            int stackY = 450, stackHeight = 34, imgX = 512, imgWidth = 49;
+            for (int i = 0; i < 10; i++)
+            {
+                imgPositions[i] = imgX + imgWidth * i;
+                if (i < 9) { stackPositions[i] = stackY - stackHeight * i; };
+            }
         }
 
         /* 点击初始化按钮进行重置 */
@@ -44,12 +51,16 @@ namespace Thomas
                 // 将前火车隐藏
                 startPbs[i].Visible = false;
                 startLbs[i].Visible = false;
+                startLbs[i].Text = i + "";
                 // 将后火车显示
                 endPbs[i].Visible = true;
                 endLbs[i].Visible = true;
                 // 火车全变为绿色
                 endPbs[i].Image = Thomas.Properties.Resources._1;
                 startPbs[i].Image = Thomas.Properties.Resources._1;
+                //
+                endLbs[i].Location = new Point(imgPositions[i] + 20, imgY);
+                endPbs[i].Location = new Point(imgPositions[i], imgY);
             }
             // 重置数据
             rightFlags = new bool[10];
@@ -98,8 +109,6 @@ namespace Thomas
 
         private void begin_btn_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("----------------------------");
-
             if (leftNum < 10 && rightNum < 10)
             {
                 // 统计软卧个数
@@ -110,78 +119,87 @@ namespace Thomas
                 {
                     MessageBox.Show("卧铺数量有错，调度前" + rightCount + "个" + "调度后" + leftCount + "个");
                 }
+                // 都为0
+                if (rightCount == leftCount && rightCount == 0)
+                {
+                    MessageBox.Show("卧铺数量为0无需调度");
+                }
                 // 个数正确
                 else
                 {
                     // 计算步骤
                     count++;
-                    Console.WriteLine("leftNum" + leftNum);
                     // 如果颜色相同直接到位
                     if (leftFlags[leftNum] == rightFlags[rightNum])
                     {
                         startPbs[leftNum].Visible = true;
+                        startLbs[leftNum].Text = rightNum + "";
                         startLbs[leftNum].Visible = true;
+                        endLbs[rightNum].Visible = false;
+                        endPbs[rightNum].Visible = false;
                         flow_lbx.Items.Add("第" + count + "步：第" + rightNum++ + "节车厢直接到位");
                         leftNum++;
-
                     }
                     // 颜色不同，进出栈
                     else
                     {
-                        Console.WriteLine("leftHead" + leftHead);
-                        Console.WriteLine("rightHead" + rightHead);
-                        Console.WriteLine("leftFlags[leftNum]" + leftFlags[leftNum]);
-                        Console.WriteLine("rightCarriageNums[rightHead] > leftCarriageNums[leftHead]" + (rightCarriageNums[rightHead] > leftCarriageNums[leftHead]));
-                        Console.WriteLine("rightFlags[rightNum]" + rightFlags[rightNum]);
-                        Console.WriteLine("rightCarriageNums[rightHead] < leftCarriageNums[leftHead])" + (rightCarriageNums[rightHead] < leftCarriageNums[leftHead]));
-                        Console.WriteLine("leftHead" + leftHead);
-                        Console.WriteLine("[rightHead" + rightHead);
                         // 软卧在左且右边还有软卧或软卧在右且左边还有软卧
                         if (leftFlags[leftNum] && (rightCarriageNums[rightHead] > leftCarriageNums[leftHead]) || rightFlags[rightNum] && (rightCarriageNums[rightHead] < leftCarriageNums[leftHead]))
                         {
-
                             // 如果栈顶是软卧，则调出
                             if (stack.stackLength() > 0 && leftFlags[leftNum] == rightFlags[stack.pope()])
                             {
-                                Console.WriteLine("len" + stack.stackLength());
-                                Console.WriteLine("pop1");
-                                Console.WriteLine("pop1" + rightFlags[stack.pope()]);
                                 startPbs[leftNum].Visible = true;
+                                startLbs[leftNum].Text = stack.pope() + "";
                                 startLbs[leftNum].Visible = true;
+                                endLbs[stack.pope()].Visible = false;
+                                endPbs[stack.pope()].Visible = false;
+                                endLbs[stack.pope()].Location = new Point(imgPositions[stack.pope()] + 20, imgY);
+                                endPbs[stack.pope()].Location = new Point(imgPositions[stack.pope()], imgY);
                                 flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
                                 leftNum++;
                             }
                             // 非软卧，进栈
                             else
                             {
+                                endLbs[rightNum].Location = new Point(stackX + 20, stackPositions[stack.stackLength() + 1]);
+                                endPbs[rightNum].Location = new Point(stackX, stackPositions[stack.stackLength() + 1]);
                                 flow_lbx.Items.Add("第" + count + "步：第" + stack.push(rightNum++) + "节车厢进库里暂等");
                             }
                         }
                         // 不符合,调出
                         else
                         {
-                            Console.WriteLine("pop2");
-                            startLbs[leftNum].Visible = true;
                             startPbs[leftNum].Visible = true;
+                            startLbs[leftNum].Text = stack.pope() + "";
+                            startLbs[leftNum].Visible = true;
+                            endLbs[stack.pope()].Visible = false;
+                            endPbs[stack.pope()].Visible = false;
+                            endLbs[stack.pope()].Location = new Point(imgPositions[stack.pope()] + 20, imgY);
+                            endPbs[stack.pope()].Location = new Point(imgPositions[stack.pope()], imgY);
                             flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
                             leftNum++;
                         }
-                        // 进行下一个软卧操作
                     }
+
+                    // 进行下一个软卧操作
                     leftHead = leftNum - 1 == leftCarriageNums[leftHead] && leftHead < leftCount - 1 ? ++leftHead : leftHead;
                     rightHead = rightNum - 1 == rightCarriageNums[rightHead] && rightHead < rightCount - 1 ? ++rightHead : rightHead;
-                    Console.WriteLine("leftNum" + leftNum);
-
                 }
             }
             // 如果栈内还有元素，调出
             else if (!stack.isEmpty())
             {
                 count++;
-                Console.WriteLine("pop3");
                 startPbs[leftNum].Visible = true;
+                startLbs[leftNum].Text = stack.pope() + "";
                 startLbs[leftNum].Visible = true;
+                endLbs[stack.pope()].Visible = false;
+                endPbs[stack.pope()].Visible = false;
+                endLbs[stack.pope()].Location = new Point(imgPositions[stack.pope()] + 20, imgY);
+                endPbs[stack.pope()].Location = new Point(imgPositions[stack.pope()], imgY);
                 flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
+                leftNum++;
             }
         }
 
