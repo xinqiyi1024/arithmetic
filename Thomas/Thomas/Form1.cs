@@ -155,7 +155,7 @@ namespace Thomas
                             if (stack.stackLength() > 0 && leftFlags[leftNum] == rightFlags[stack.pope()])
                             {
                                 //
-                                 info = "出栈";
+                                info = "出栈";
                                 timeX = timeY = 0;
                                 this.myTimer.Enabled = true;
                                 thisPb = endPbs[stack.pope()];
@@ -208,16 +208,21 @@ namespace Thomas
             }
         }
 
+        /* 计时器事件 */
         private void timer1_Tick(object sender, EventArgs e)
         {
             int x, y;
+            // 动画
             switch (info)
             {
                 case "直接到位":
+                    // 移动距离
                     timeX += 10;
                     x = rightImgPositions[rightNum] - timeX;
+                    // 移动的位置
                     thisPb.Location = new Point(x, 67);
                     thisLb.Location = new Point(x + 20, 67);
+                    // 到达位置
                     if (x <= leftImgPositions[leftNum])
                     {
                         this.myTimer.Enabled = false;
@@ -231,19 +236,23 @@ namespace Thomas
                     }
                     break;
                 case "进栈":
+                    // 移动距离
                     timeX += 10;
                     x = rightImgPositions[rightNum] - timeX;
+                    // 横向移动
                     if (x >= stackX)
                     {
                         thisPb.Location = new Point(x, 67);
                         thisLb.Location = new Point(x + 20, 67);
                     }
+                    // 纵向移动
                     else
                     {
                         timeY += 10;
                         y = 67 + timeY;
                         thisPb.Location = new Point(stackX, y);
                         thisLb.Location = new Point(stackX + 20, y);
+                        // 到达位置
                         if (y > stackPositions[stack.stackLength() + 1])
                         {
                             this.myTimer.Enabled = false;
@@ -254,20 +263,24 @@ namespace Thomas
                     }
                     break;
                 case "出栈":
+                // 移动距离
                     timeY += 10;
                     x = stackX;
                     y = stackPositions[stack.stackLength()] - timeY;
+                    // 纵向移动
                     if (y >= 67)
                     {
                         thisPb.Location = new Point(x, y);
                         thisLb.Location = new Point(x + 20, y);
                     }
+                    // 横向移动
                     else
                     {
                         timeX += 10;
                         x = stackX - timeX;
                         thisPb.Location = new Point(x, 67);
                         thisLb.Location = new Point(x + 20, 67);
+                        // 到达位置
                         if (x <= leftImgPositions[leftNum])
                         {
                             this.myTimer.Enabled = false;
@@ -286,7 +299,6 @@ namespace Thomas
                 default:
                     break;
             }
-
         }
     }
 }
