@@ -15,11 +15,14 @@ namespace Thomas
         PictureBox[] startPbs, endPbs;
         Label[] startLbs, endLbs, stackLbs;
         bool[] leftFlags = new bool[10], rightFlags = new bool[10];
-        int stackX = 397, imgY = 67;
-        int[] stackPositions = new int[9], imgPositions = new int[10];
+        int stackX = 478, imgY = 67;
+        int[] stackPositions = new int[9], leftImgPositions = new int[10], rightImgPositions = new int[10];
         List<int> leftCarriageNums = new List<int>(), rightCarriageNums = new List<int>();
-        int count = 0, rightNum = 0, leftNum = 0, leftHead = 0, rightHead = 0;
+        int count = 0, rightNum = 0, leftNum = 0, leftHead = 0, rightHead = 0, timeX = 0, timeY = 0;
         Stack<int> stack = new Stack<int>(9);
+        PictureBox thisPb;
+        Label thisLb;
+        String info;
         /* 初始化 */
         public Form1()
         {
@@ -35,10 +38,12 @@ namespace Thomas
             // stackLbs数组存放栈0-8
             stackLbs = new Label[] { stack_lb0, stack_lb1, stack_lb2, stack_lb3, stack_lb4, stack_lb5, stack_lb6, stack_lb7, stack_lb8 };
             // stackPositions数组存放stack的纵坐标,imgPositions数组存放img的恒坐标
-            int stackY = 450, stackHeight = 34, imgX = 512, imgWidth = 49;
+            int stackY = 450, stackHeight = 34, leftImgX = 12, rightImgX = 512, imgWidth = 49;
+            this.myTimer.Enabled = false;
             for (int i = 0; i < 10; i++)
             {
-                imgPositions[i] = imgX + imgWidth * i;
+                leftImgPositions[i] = leftImgX + imgWidth * i;
+                rightImgPositions[i] = rightImgX + imgWidth * i;
                 if (i < 9) { stackPositions[i] = stackY - stackHeight * i; };
             }
         }
@@ -59,8 +64,8 @@ namespace Thomas
                 endPbs[i].Image = Thomas.Properties.Resources._1;
                 startPbs[i].Image = Thomas.Properties.Resources._1;
                 //
-                endLbs[i].Location = new Point(imgPositions[i] + 20, imgY);
-                endPbs[i].Location = new Point(imgPositions[i], imgY);
+                endLbs[i].Location = new Point(rightImgPositions[i] + 20, imgY);
+                endPbs[i].Location = new Point(rightImgPositions[i], imgY);
             }
             // 重置数据
             rightFlags = new bool[10];
@@ -107,6 +112,7 @@ namespace Thomas
             display();
         }
 
+        /* 开始调度 */
         private void begin_btn_Click(object sender, EventArgs e)
         {
             if (leftNum < 10 && rightNum < 10)
@@ -132,56 +138,49 @@ namespace Thomas
                     // 如果颜色相同直接到位
                     if (leftFlags[leftNum] == rightFlags[rightNum])
                     {
-                        startPbs[leftNum].Visible = true;
-                        startLbs[leftNum].Text = rightNum + "";
-                        startLbs[leftNum].Visible = true;
-                        endLbs[rightNum].Visible = false;
-                        endPbs[rightNum].Visible = false;
-                        flow_lbx.Items.Add("第" + count + "步：第" + rightNum++ + "节车厢直接到位");
-                        leftNum++;
+                        info = "直接到位";
+                        timeX = timeY = 0;
+                        this.myTimer.Enabled = true;
+                        thisPb = endPbs[rightNum];
+                        thisLb = endLbs[rightNum];
                     }
                     // 颜色不同，进出栈
                     else
                     {
                         // 软卧在左且右边还有软卧或软卧在右且左边还有软卧
-                        if (leftFlags[leftNum] && (rightCarriageNums[rightHead] > leftCarriageNums[leftHead]) || rightFlags[rightNum] && (rightCarriageNums[rightHead] < leftCarriageNums[leftHead]))
+                        if (leftFlags[leftNum] && (rightCarriageNums[rightHead] > leftCarriageNums[leftHead])
+                                || rightFlags[rightNum] && (rightCarriageNums[rightHead] < leftCarriageNums[leftHead]))
                         {
                             // 如果栈顶是软卧，则调出
                             if (stack.stackLength() > 0 && leftFlags[leftNum] == rightFlags[stack.pope()])
                             {
-                                startPbs[leftNum].Visible = true;
-                                startLbs[leftNum].Text = stack.pope() + "";
-                                startLbs[leftNum].Visible = true;
-                                endLbs[stack.pope()].Visible = false;
-                                endPbs[stack.pope()].Visible = false;
-                                endLbs[stack.pope()].Location = new Point(imgPositions[stack.pope()] + 20, imgY);
-                                endPbs[stack.pope()].Location = new Point(imgPositions[stack.pope()], imgY);
-                                flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
-                                leftNum++;
+                                //
+                                info = "出栈";
+                                timeX = timeY = 0;
+                                this.myTimer.Enabled = true;
+                                thisPb = endPbs[stack.pope()];
+                                thisLb = endLbs[stack.pope()];
                             }
                             // 非软卧，进栈
                             else
                             {
-                                endLbs[rightNum].Location = new Point(stackX + 20, stackPositions[stack.stackLength() + 1]);
-                                endPbs[rightNum].Location = new Point(stackX, stackPositions[stack.stackLength() + 1]);
-                                flow_lbx.Items.Add("第" + count + "步：第" + stack.push(rightNum++) + "节车厢进库里暂等");
+                                info = "进栈";
+                                timeX = timeY = 0;
+                                this.myTimer.Enabled = true;
+                                thisPb = endPbs[rightNum];
+                                thisLb = endLbs[rightNum];
                             }
                         }
                         // 不符合,调出
                         else
                         {
-                            startPbs[leftNum].Visible = true;
-                            startLbs[leftNum].Text = stack.pope() + "";
-                            startLbs[leftNum].Visible = true;
-                            endLbs[stack.pope()].Visible = false;
-                            endPbs[stack.pope()].Visible = false;
-                            endLbs[stack.pope()].Location = new Point(imgPositions[stack.pope()] + 20, imgY);
-                            endPbs[stack.pope()].Location = new Point(imgPositions[stack.pope()], imgY);
-                            flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
-                            leftNum++;
+                            info = "出栈";
+                            timeX = timeY = 0;
+                            this.myTimer.Enabled = true;
+                            thisPb = endPbs[stack.pope()];
+                            thisLb = endLbs[stack.pope()];
                         }
                     }
-
                     // 进行下一个软卧操作
                     leftHead = leftNum - 1 == leftCarriageNums[leftHead] && leftHead < leftCount - 1 ? ++leftHead : leftHead;
                     rightHead = rightNum - 1 == rightCarriageNums[rightHead] && rightHead < rightCount - 1 ? ++rightHead : rightHead;
@@ -191,15 +190,11 @@ namespace Thomas
             else if (!stack.isEmpty())
             {
                 count++;
-                startPbs[leftNum].Visible = true;
-                startLbs[leftNum].Text = stack.pope() + "";
-                startLbs[leftNum].Visible = true;
-                endLbs[stack.pope()].Visible = false;
-                endPbs[stack.pope()].Visible = false;
-                endLbs[stack.pope()].Location = new Point(imgPositions[stack.pope()] + 20, imgY);
-                endPbs[stack.pope()].Location = new Point(imgPositions[stack.pope()], imgY);
-                flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
-                leftNum++;
+                info = "出栈";
+                timeX = timeY = 0;
+                this.myTimer.Enabled = true;
+                thisPb = endPbs[stack.pope()];
+                thisLb = endLbs[stack.pope()];
             }
         }
 
@@ -210,6 +205,99 @@ namespace Thomas
             for (int i = 0; i < leftCarriageNums.Count; i++)
             {
                 carriage_lbx.Items.Add("第" + leftCarriageNums[i] + "车厢");
+            }
+        }
+
+        /* 计时器事件 */
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            int x, y;
+            // 动画
+            switch (info)
+            {
+                case "直接到位":
+                    // 移动距离
+                    timeX += 10;
+                    x = rightImgPositions[rightNum] - timeX;
+                    // 移动的位置
+                    thisPb.Location = new Point(x, 67);
+                    thisLb.Location = new Point(x + 20, 67);
+                    // 到达位置
+                    if (x <= leftImgPositions[leftNum])
+                    {
+                        this.myTimer.Enabled = false;
+                        startPbs[leftNum].Visible = true;
+                        startLbs[leftNum].Text = rightNum + "";
+                        startLbs[leftNum].Visible = true;
+                        endLbs[rightNum].Visible = false;
+                        endPbs[rightNum].Visible = false;
+                        flow_lbx.Items.Add("第" + count + "步：第" + rightNum++ + "节车厢直接到位");
+                        leftNum++;
+                    }
+                    break;
+                case "进栈":
+                    // 移动距离
+                    timeX += 10;
+                    x = rightImgPositions[rightNum] - timeX;
+                    // 横向移动
+                    if (x >= stackX)
+                    {
+                        thisPb.Location = new Point(x, 67);
+                        thisLb.Location = new Point(x + 20, 67);
+                    }
+                    // 纵向移动
+                    else
+                    {
+                        timeY += 10;
+                        y = 67 + timeY;
+                        thisPb.Location = new Point(stackX, y);
+                        thisLb.Location = new Point(stackX + 20, y);
+                        // 到达位置
+                        if (y > stackPositions[stack.stackLength() + 1])
+                        {
+                            this.myTimer.Enabled = false;
+                            endLbs[rightNum].Location = new Point(stackX + 20, stackPositions[stack.stackLength() + 1]);
+                            endPbs[rightNum].Location = new Point(stackX, stackPositions[stack.stackLength() + 1]);
+                            flow_lbx.Items.Add("第" + count + "步：第" + stack.push(rightNum++) + "节车厢进库里暂等");
+                        }
+                    }
+                    break;
+                case "出栈":
+                // 移动距离
+                    timeY += 10;
+                    x = stackX;
+                    y = stackPositions[stack.stackLength()] - timeY;
+                    // 纵向移动
+                    if (y >= 67)
+                    {
+                        thisPb.Location = new Point(x, y);
+                        thisLb.Location = new Point(x + 20, y);
+                    }
+                    // 横向移动
+                    else
+                    {
+                        timeX += 10;
+                        x = stackX - timeX;
+                        thisPb.Location = new Point(x, 67);
+                        thisLb.Location = new Point(x + 20, 67);
+                        // 到达位置
+                        if (x <= leftImgPositions[leftNum])
+                        {
+                            this.myTimer.Enabled = false;
+                            startLbs[leftNum].Text = stack.pope() + "";
+                            startLbs[leftNum].Visible = true;
+                            startPbs[leftNum].Visible = true;
+                            endLbs[stack.pope()].Visible = false;
+                            endPbs[stack.pope()].Visible = false;
+                            endLbs[stack.pope()].Location = new Point(rightImgPositions[stack.pope()] + 20, imgY);
+                            endPbs[stack.pope()].Location = new Point(rightImgPositions[stack.pope()], imgY);
+                            flow_lbx.Items.Add("第" + count + "步：第" + stack.pop() + "节车厢从库里调出");
+                            leftNum++;
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }

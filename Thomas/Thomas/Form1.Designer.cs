@@ -90,7 +90,7 @@
             this.stack_lb6 = new System.Windows.Forms.Label();
             this.stack_lb7 = new System.Windows.Forms.Label();
             this.stack_lb8 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.myTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.start_pb0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_pb1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_pb2)).BeginInit();
@@ -136,7 +136,7 @@
             // 
             // begin_btn
             // 
-            this.begin_btn.Location = new System.Drawing.Point(486, 139);
+            this.begin_btn.Location = new System.Drawing.Point(595, 144);
             this.begin_btn.Name = "begin_btn";
             this.begin_btn.Size = new System.Drawing.Size(75, 23);
             this.begin_btn.TabIndex = 47;
@@ -167,7 +167,7 @@
             // 
             this.flow_lbx.FormattingEnabled = true;
             this.flow_lbx.ItemHeight = 12;
-            this.flow_lbx.Location = new System.Drawing.Point(608, 155);
+            this.flow_lbx.Location = new System.Drawing.Point(704, 148);
             this.flow_lbx.Name = "flow_lbx";
             this.flow_lbx.Size = new System.Drawing.Size(208, 292);
             this.flow_lbx.TabIndex = 27;
@@ -686,7 +686,7 @@
             this.stack_lb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb0.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.stack_lb0.ForeColor = System.Drawing.Color.Transparent;
-            this.stack_lb0.Location = new System.Drawing.Point(387, 416);
+            this.stack_lb0.Location = new System.Drawing.Point(468, 416);
             this.stack_lb0.Name = "stack_lb0";
             this.stack_lb0.Size = new System.Drawing.Size(68, 34);
             this.stack_lb0.TabIndex = 116;
@@ -697,7 +697,7 @@
             this.stack_lb1.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb1.Location = new System.Drawing.Point(387, 382);
+            this.stack_lb1.Location = new System.Drawing.Point(468, 382);
             this.stack_lb1.Name = "stack_lb1";
             this.stack_lb1.Size = new System.Drawing.Size(68, 34);
             this.stack_lb1.TabIndex = 63;
@@ -707,7 +707,7 @@
             this.stack_lb2.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb2.Location = new System.Drawing.Point(387, 348);
+            this.stack_lb2.Location = new System.Drawing.Point(468, 348);
             this.stack_lb2.Name = "stack_lb2";
             this.stack_lb2.Size = new System.Drawing.Size(68, 34);
             this.stack_lb2.TabIndex = 114;
@@ -717,7 +717,7 @@
             this.stack_lb3.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb3.Location = new System.Drawing.Point(387, 314);
+            this.stack_lb3.Location = new System.Drawing.Point(468, 314);
             this.stack_lb3.Name = "stack_lb3";
             this.stack_lb3.Size = new System.Drawing.Size(68, 34);
             this.stack_lb3.TabIndex = 122;
@@ -727,7 +727,7 @@
             this.stack_lb4.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb4.Location = new System.Drawing.Point(387, 280);
+            this.stack_lb4.Location = new System.Drawing.Point(468, 280);
             this.stack_lb4.Name = "stack_lb4";
             this.stack_lb4.Size = new System.Drawing.Size(68, 34);
             this.stack_lb4.TabIndex = 121;
@@ -737,7 +737,7 @@
             this.stack_lb5.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb5.Location = new System.Drawing.Point(387, 246);
+            this.stack_lb5.Location = new System.Drawing.Point(468, 246);
             this.stack_lb5.Name = "stack_lb5";
             this.stack_lb5.Size = new System.Drawing.Size(68, 34);
             this.stack_lb5.TabIndex = 120;
@@ -747,7 +747,7 @@
             this.stack_lb6.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb6.Location = new System.Drawing.Point(387, 212);
+            this.stack_lb6.Location = new System.Drawing.Point(468, 212);
             this.stack_lb6.Name = "stack_lb6";
             this.stack_lb6.Size = new System.Drawing.Size(68, 34);
             this.stack_lb6.TabIndex = 119;
@@ -757,7 +757,7 @@
             this.stack_lb7.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb7.Location = new System.Drawing.Point(387, 178);
+            this.stack_lb7.Location = new System.Drawing.Point(468, 178);
             this.stack_lb7.Name = "stack_lb7";
             this.stack_lb7.Size = new System.Drawing.Size(68, 34);
             this.stack_lb7.TabIndex = 118;
@@ -767,10 +767,16 @@
             this.stack_lb8.BackColor = System.Drawing.Color.Transparent;
             this.stack_lb8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stack_lb8.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.stack_lb8.Location = new System.Drawing.Point(387, 144);
+            this.stack_lb8.Location = new System.Drawing.Point(468, 144);
             this.stack_lb8.Name = "stack_lb8";
             this.stack_lb8.Size = new System.Drawing.Size(68, 34);
             this.stack_lb8.TabIndex = 117;
+            // 
+            // myTimer
+            // 
+            this.myTimer.Enabled = true;
+            this.myTimer.Interval = 1;
+            this.myTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -927,7 +933,7 @@
         private System.Windows.Forms.Label stack_lb5;
         private System.Windows.Forms.Label stack_lb4;
         private System.Windows.Forms.Label stack_lb3;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer myTimer;
     }
 }
 
