@@ -1,7 +1,0 @@
-D:\Utilitysoftware\vs2008\AProjects\2020002309_方泽楠_linklist\2020002309_方泽楠_linklist\obj\Debug\ResolveAssemblyReference.cache
-D:\Utilitysoftware\vs2008\AProjects\2020002309_方泽楠_linklist\2020002309_方泽楠_linklist\obj\Debug\_2020002309_方泽楠_linklist.Properties.Resources.resources
-D:\Utilitysoftware\vs2008\AProjects\2020002309_方泽楠_linklist\2020002309_方泽楠_linklist\obj\Debug\2020002309_方泽楠_linklist.csproj.GenerateResource.Cache
-D:\Utilitysoftware\vs2008\AProjects\2020002309_方泽楠_linklist\2020002309_方泽楠_linklist\bin\Debug\2020002309_方泽楠_linklist.exe
-D:\Utilitysoftware\vs2008\AProjects\2020002309_方泽楠_linklist\2020002309_方泽楠_linklist\bin\Debug\2020002309_方泽楠_linklist.pdb
-D:\Utilitysoftware\vs2008\AProjects\2020002309_方泽楠_linklist\2020002309_方泽楠_linklist\obj\Debug\2020002309_方泽楠_linklist.exe
-D:\Utilitysoftware\vs2008\AProjects\2020002309_方泽楠_linklist\2020002309_方泽楠_linklist\obj\Debug\2020002309_方泽楠_linklist.pdb
